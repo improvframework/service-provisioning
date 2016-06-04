@@ -1,0 +1,45 @@
+{
+    "name" : "improvframework/service-provisioning" ,
+    "description": "A ContainerInterop-compatible package intended to ease the organization and loading of container services.",
+    "type": "library",
+    "keywords": [
+        "keywords"
+    ],
+    "homepage": "https://github.com/improvframework/service-provisioning",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Jim DeLois",
+            "email": "jim.delois@improvframework.org",
+            "homepage": "https://www.improvframework.org"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6.0",
+        "container-interop/container-interop": "^1.1"
+    },
+    "require-dev" : {
+        "fiunchinho/phpunit-randomizer": "^2.0",
+        "pdepend/pdepend": "^2.2",
+        "phing/phing": "^2.14",
+        "phpdocumentor/phpdocumentor": "^2.9",
+        "phploc/phploc": "^3.0",
+        "phpmd/phpmd": "^2.4",
+        "phpmetrics/phpmetrics": "^1.10",
+        "phpunit/phpunit": "^5.4",
+        "satooshi/php-coveralls": "^1.0",
+        "sebastian/phpcpd": "^2.0",
+        "squizlabs/php_codesniffer": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Improv\\ServiceProvisioning\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Improv\\ServiceProvisioning\\Test\\": "tests/lib"
+        }
+    }
+}
