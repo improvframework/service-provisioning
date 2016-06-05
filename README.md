@@ -2,7 +2,9 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/575366517757a00041b3a3e0/badge.svg?style=flat)](https://www.versioneye.com/user/projects/575366517757a00041b3a3e0)
 [![Code Climate](https://codeclimate.com/github/improvframework/service-provisioning/badges/gpa.svg)](https://codeclimate.com/github/improvframework/service-provisioning)
 [![Coverage Status](https://coveralls.io/repos/improvframework/service-provisioning/badge.svg?branch=master&service=github)](https://coveralls.io/github/improvframework/service-provisioning?branch=master)
+<!--
 [![HHVM Status](http://hhvm.h4cc.de/badge/improvframework/service-provisioning.svg)](http://hhvm.h4cc.de/package/improvframework/service-provisioning)
+-->
 
 # Improv Framework - Service Provisioning
 
