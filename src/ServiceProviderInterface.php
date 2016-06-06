@@ -48,8 +48,8 @@ use Interop\Container\ContainerInterface;
  * It is often useful to aggregate services (classes that need to be registered into a Container)
  * into logical groupings of related functionality.  E.g., adding "User" functionality may require
  * the setting of several services on the container; a controller, some services, a repository, etc.
- * These items could be grouped together in a "ServiceProvider" such that provider may encapsulate
- * the registration details of all the services related to "module".
+ * These items could be grouped together in a "ServiceProvider" such that then provider may encapsulate
+ * the registration details of all the services related to its "module".
  *
  * Calling `register` with the Container should install into it all services of the module. In this
  * sense, the implementation "Provides" to the application a suite of Services.
