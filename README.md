@@ -14,7 +14,7 @@ A Dependency Injection Container is primarily used to retrieve fully-configured 
 
 ### The Problem ###
 
-The documentation for many frameworks and containers will illustrate some sort of trivial "Hello World"-esque example setup.  These often include something like a `container.php`, a `config.php`, or a `bootstrap.php`, etc, within which all of the example application's services are installed into the shared container.  When this file must grow to support just a little more functionality, things can quickly start to get unweildy.  E.g.,
+The documentation for many frameworks and containers will illustrate some sort of trivial "Hello World"-esque example.  These steups often include something like a `container.php`, a `config.php`, or a `bootstrap.php`, etc, within which all of the example application's services are installed into the shared container.  When this file must grow to support slightly more functionality, things can quickly start to get busy.  E.g.,
 
 ```php
 <?php // File: container.php
@@ -74,13 +74,13 @@ This helps to keep application entrypoints nice and trim, like HTTP front-contro
 ```php
 <?php // File public/index.php
 
-$container   = include_once('../container.php');
+$container   = require_once('../container.php');
 $application = $container->get('application');
 
 $application->run();
 ```
 
-The example above is trite and a bit naive, but the point is illustrated. We have only a few main services configured, with only a couple of domain entities to think about (Blog and User, here).  Image a much larger application, with several more entities to manage. It also shows each service as being instantiated with no further operations, whereas many objects often need tweaking or further configuration before being returned. Moreover, this container configuration has nothing by way of factories, validators, event dispatchers, loggers, profilers, formatters, authentication services, read/write database, cache storage, etc.  It's not difficult to see that "inline" container config becomes unmanageable almost immediately, and practically impossible to work with in all but the smallest of real-world applications.
+The example above is trite and a bit naive, but the problem is evident. We have only a few main services configured, with just a couple of domain entities (Blog and User, here).  Imagine a much larger application, with several more entities to manage. It also has each service being instantiated with no further operations, whereas many objects often need tweaking or configuration before being returned. Moreover, this container has nothing by way of factories, validators, event dispatchers, loggers, profilers, formatters, authentication services, read/write database, cache storage, etc.  It's not difficult to see that "inline" container management becomes unwieldy almost immediately, and practically impossible in all but the smallest of real-world applications.
 
 There are two things occurring in the above example that are required to initialize the container for the script run.  First, the services are being **defined and configured** in `container.php`.  That, in and of itself, does nothing for the running PHP process unless this file is invoked by being included within `index.php`, causing the **loading** of the services at that time. <sup>&dagger;</sup>
 
@@ -88,7 +88,7 @@ There are two things occurring in the above example that are required to initial
 
 ### The Solution ###
 
-The Improv Service Provisioning library sets out to resolve precisely the above issues.
+The Improv Service Provisioning library sets out to resolve the above issues.
 
 #### ServiceLoaders ####
 
@@ -104,7 +104,7 @@ $container->get('application')->run();
 ```
 We can think of this class or layer as a **ServiceLoader** in that its job is to "load" the services into the running application.
 
-The benefit to this approach is that the action of loading of services becomes testable, and encapsulates the details about _how_ the loading is happening.  Whether it's actually just reading in the same huge `container.php` file, or leveraging all several other various files under the hood, it's hidden away and the loading becomes more reusable as a result. Instead of reading a file, it may even call on another layer of classes to define services, as seen next.  Further, the swapping or mixing of loading strategies becomes possible, without affecting the consuming application.
+The benefit to this approach is that the action of loading of services becomes testable, and encapsulates the details about _how_ the loading is happening.  Whether it's actually just reading in the same huge `container.php` file, or leveraging several other files under the hood, it's hidden away and the loading becomes more reusable as a result. Instead of reading in files, it may even call on another layer of classes to define services (seen next).  Further, the swapping or mixing of loading strategies becomes possible, without affecting the consuming application.
 
 #### ServiceProviders ####
 
@@ -112,7 +112,7 @@ Whether or not we use a ServiceLoader, as described above, using a single file o
 
 We can avoid this scenario by forming logical groups of associated services into classes of their own. Such a class might be known as a **ServiceProvider**, in the sense that this separate class _provides_ suites of related _services_ to the application.
 
-The positive consequences of this are similar to those above. Providers encapsulate their logic, become testable units, and encapsulate their specific implementation logic.  They become more legible, smaller and easier to reason about, and can even be extracted to packages alongside their services and re-used across applications.
+The positive consequences of this are similar to those above. Providers encapsulate their speicifc implementation logic and become testable units, as well.  They become more legible, compact, and easier to reason about. Providers can even be extracted to packages alongside their services and re-used across applications.
 
 ## Package Installation ##
 
