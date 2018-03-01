@@ -29,7 +29,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @author     Jim DeLois <%%PHPDOC_AUTHOR_EMAIL%%>
- * @copyright  2016 Jim DeLois
+ * @copyright  2018 Jim DeLois
  * @license    http://opensource.org/licenses/BSD-3-Clause BSD 3-Clause License
  * @version    %%PHPDOC_VERSION%%
  * @link       https://github.com/improvframework/service-provisioning
@@ -39,7 +39,7 @@
 
 namespace Improv\ServiceProvisioning;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * Bootstraps the loading of services needed by a container. Can be though of as a

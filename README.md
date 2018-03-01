@@ -6,7 +6,7 @@
 
 # Improv Framework - Service Provisioning
 
-A ContainerInterop-compatible package intended to ease the organization and loading of container services.
+A PSR-11-compatible package intended to ease the organization and loading of container services.
 
 ## Motivation ##
 
@@ -132,7 +132,7 @@ This package conforms to PSR-4 autoloading standards.
 
 ### ServiceLoaderInterace ###
 
-The interface `\Improv\ServiceProvisioning\ServiceLoaderInterface` can be used to encapsulate any strategy desired for attaching services to an `\Interop\Container\ContainerInterface` container. This can be done by implementing the `loadServices(ContainerInterface $continer)` method of the interface.
+The interface `\Improv\ServiceProvisioning\ServiceLoaderInterface` can be used to encapsulate any strategy desired for attaching services to a `\Psr\Container\ContainerInterface` container. This can be done by implementing the `loadServices(ContainerInterface $continer)` method of the interface.
 
 As an example, we can look at one such strategy included within this package.
 
@@ -174,7 +174,7 @@ class CustomServiceInvoker
 }
 ```
 
-Using a callback to "invoke" the attachment of the service into the Container means that this implementation of the `ServiceLoaderInterface` can be used with any other Container library (e.g. `Pimple` or `\League\Container`, something custom, etc), bridging a gap between proprietary code and `ContainerInterop`.
+Using a callback to "invoke" the attachment of the service into the Container means that this implementation of the `ServiceLoaderInterface` can be used with any other Container library (e.g. `Pimple` or `\League\Container`, something custom, etc), bridging a gap between proprietary code and `Container`.
 
 This library also offers its own brand of service providers, covered next.
 

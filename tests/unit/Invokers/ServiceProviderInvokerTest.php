@@ -4,7 +4,7 @@ namespace Improv\ServiceProvisioning\Invokers;
 
 use Improv\ServiceProvisioning\ServiceProviderInterface;
 use Improv\ServiceProvisioning\Test\AbstractTestCase;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * @covers \Improv\ServiceProvisioning\Invokers\ServiceProviderInvoker
