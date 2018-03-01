@@ -131,7 +131,6 @@ class ClassNameServiceLoader implements ServiceLoaderInterface
             }
 
             $invoker(new $class, $container);
-
         });
     }
 }
