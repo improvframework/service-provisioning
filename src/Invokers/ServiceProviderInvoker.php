@@ -29,7 +29,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @author     Jim DeLois <%%PHPDOC_AUTHOR_EMAIL%%>
- * @copyright  2016 Jim DeLois
+ * @copyright  2018 Jim DeLois
  * @license    http://opensource.org/licenses/BSD-3-Clause BSD 3-Clause License
  * @version    %%PHPDOC_VERSION%%
  * @link       https://github.com/improvframework/service-provisioning
@@ -40,7 +40,7 @@
 namespace Improv\ServiceProvisioning\Invokers;
 
 use Improv\ServiceProvisioning\ServiceProviderInterface;
-use Interop\Container\ContainerInterface;
+use PSR\Container\ContainerInterface;
 
 /**
  * A convenience class that can be used as a callable in order to "register" into the Container any
