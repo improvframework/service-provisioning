@@ -1,6 +1,6 @@
 {
     "name" : "improvframework/service-provisioning" ,
-    "description": "A ContainerInterop-compatible package intended to ease the organization and loading of container services.",
+    "description": "A PSR-11-compatible package intended to ease the organization and loading of container services.",
     "type": "library",
     "keywords": [
         "keywords"
@@ -16,8 +16,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.6.0",
-        "container-interop/container-interop": "^1.1"
+        "php": ">=7.0",
+        "psr/container": "^1.0"
     },
     "require-dev" : {
         "fiunchinho/phpunit-randomizer": "^2.0",

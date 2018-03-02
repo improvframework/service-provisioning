@@ -5,7 +5,7 @@ namespace Improv\ServiceProvisioning\Loaders;
 use Improv\ServiceProvisioning\ServiceProviderInterface;
 use Improv\ServiceProvisioning\Test\AbstractTestCase;
 use Improv\ServiceProvisioning\Test\Fixtures\TestLoaderInterface;
-use Interop\Container\ContainerInterface;
+use PSR\Container\ContainerInterface;
 
 /**
  * @covers \Improv\ServiceProvisioning\Loaders\ClassNameServiceLoader

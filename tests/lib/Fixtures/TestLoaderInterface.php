@@ -2,7 +2,7 @@
 
 namespace Improv\ServiceProvisioning\Test\Fixtures;
 
-use Interop\Container\ContainerInterface;
+use PSR\Container\ContainerInterface;
 
 interface TestLoaderInterface
 {
