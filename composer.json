@@ -1,6 +1,6 @@
 {
     "name" : "improvframework/service-provisioning" ,
-    "description": "A ContainerInterop-compatible package intended to ease the organization and loading of container services.",
+    "description": "A PSR-11-compatible package intended to ease the organization and loading of container services.",
     "type": "library",
     "keywords": [
         "keywords"

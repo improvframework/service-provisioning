@@ -19,13 +19,15 @@ The documentation for many frameworks and containers will illustrate some sort o
 ```php
 <?php // File: container.php
 
+// Implements \PSR\Container\ContainerInterface
+// as well as \ArrayAccess (e.g. \Pimple\Container)
 $container = new \Some\Container();
 
-$container['routing.table'] = function (Container $container) {
+$container['routing.table'] = function (ContainerInterface $container) {
 	return new RoutingTable($container->get('config'));
 }
 
-$container['routing.router'] = function (Container $container) {
+$container['routing.router'] = function (ContainerInterface $container) {
 	return new Router($container->get('routing.table'));
 };
 
@@ -33,35 +35,35 @@ $container['config'] = function () {
 	return new Configuration(new ConfigLoader('/config.yml'));
 };
 
-$container['application'] = function (Container $container) {
+$container['application'] = function (ContainerInterface $container) {
 	return new Application($container->get('routing.router'));
 };
 
-$container['db'] = function (Container $container) {
+$container['db'] = function (ContainerInterface $container) {
 	return new DatabaseFactory::create(Database::TYPE_PDO, $container->get('config'));
 };
 
-$container['repository.blog'] = function (Container $container) {
+$container['repository.blog'] = function (ContainerInterface $container) {
 	return new BlogRepository($container->get('db'));
 };
 
-$container['repository.user'] = function (Container $container) {
+$container['repository.user'] = function (ContainerInterface $container) {
 	return new UserRepository($container->get('db'));
 };
 
-$container['service.blog'] = function (Container $container) {
+$container['service.blog'] = function (ContainerInterface $container) {
 	return new BlogService($container->get('repository.blog'))
 };
 
-$container['service.user'] = function (Container $container) {
+$container['service.user'] = function (ContainerInterface $container) {
 	return new UserService($container->get('repository.user'))
 };
 
-$container['controller.blog'] = function (Container $container) {
+$container['controller.blog'] = function (ContainerInterface $container) {
 	return new BlogController($container->get('service.blog'));
 };
 
-$container['controller.user'] = function (Container $container) {
+$container['controller.user'] = function (ContainerInterface $container) {
 	return new UserController($container->get('service.user'));
 };
 
@@ -97,7 +99,7 @@ The awkward line of `$configuration = include('../container.php');` can be abstr
 ```php
 <?php // File public/index.php
 
-$container = new Container();
+$container = new ContainerInterface();
 (new Custom\App\ServiceLoader())->loadServices($container);
 
 $container->get('application')->run();
@@ -176,6 +178,8 @@ class CustomServiceInvoker
 
 Using a callback to "invoke" the attachment of the service into the Container means that this implementation of the `ServiceLoaderInterface` can be used with any other Container library (e.g. `Pimple` or `\League\Container`, something custom, etc), bridging a gap between proprietary code and `Container`.
 
+An example of leveraging class-based Invokers is available below, and the Improv Framework also [offers one](https://github.com/improvframework/service-provisioning-pimple) specifically for integrating with the popular `Pimple\Container` project.
+
 This library also offers its own brand of service providers, covered next.
 
 ### ServiceProviderInterface ###
@@ -233,8 +237,8 @@ As such, an updated example may look like:
 // Build a map of service providers, each of which implement this
 // package's \Improv\ServiceProvisioning\ServiceProviderInterface
 $map = [
-	CoreServiceProvider::class,
-	PersistenceServiceProvider::class,
+    CoreServiceProvider::class,
+    PersistenceServiceProvider::class,
     UserModuleServiceProvider::class,
     BlogModuleServiceProvider::class,
     // etc
